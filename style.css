@@ -1,5 +1,103 @@
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("./fonts/Press_Start_2P/PressStart2P-Regular.ttf");
+}
+
+:root {
+  --clr-background-black: hsla(0, 0%, 0%, 0.7);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Press Start 2P";
+  color: white;
+}
+
+body {
+  background-image: url("./assets/background-opacity.png");
+  background-repeat: no-repeat;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+header h1 {
+  font-size: 0.75rem;
+}
+
+header img {
+  filter: invert(100%);
+}
+
+.menu {
+  display: none;
+}
+
+#username-score {
+  text-align: center;
+}
+
+#username-score h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+#score {
+  background-color: var(--clr-background-black);
+  width: fit-content;
+  padding: 0.5rem 3rem;
+  margin: auto;
+  border-radius: 100rem;
+  border: 1px solid white;
+}
+
 main {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(6, 1fr);
+}
+
+main img {
+  grid-area: 2/2/5/5;
+  width: 100%;
+  border: 3px solid white;
+  border-radius: 100%;
+}
+
+.comessage {
+  background-color: var(--clr-background-black);
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid white;
+  width: fit-content;
+  padding: 0.5rem 3rem;
+  margin: auto;
+}
+
+.comessage p {
+  font-size: 0.5rem;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+}
+
+footer p {
+  padding: 1rem;
+  font-size: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    background-repeat: initial;
+    background-size: cover;
+  }
 }

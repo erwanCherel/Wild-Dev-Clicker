@@ -49,7 +49,7 @@ header img {
   font-size: 2rem;
 }
 
-#score {
+#score-container {
   background-color: var(--clr-background-black);
   width: fit-content;
   padding: 0.5rem 3rem;
@@ -85,10 +85,9 @@ main img {
   font-size: 0.5rem;
 }
 
-footer {
-  position: absolute;
+/* footer {
   bottom: 0;
-}
+} */
 
 footer p {
   padding: 1rem;
@@ -99,5 +98,21 @@ footer p {
   body {
     background-repeat: initial;
     background-size: cover;
+  }
+
+  #main {
+    width: 66%;
+  }
+
+  #menu {
+    width: 34%;
+  }
+  main {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+
+  main img {
+    grid-area: 2/2/4/4;
   }
 }

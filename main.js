@@ -42,3 +42,53 @@ const items = [
     description: "Tu es maintenant un vrai DEV !",
   },
 ];
+
+function createItem(itemInformations) {
+  const listItems = document.querySelector("#right-panel ul");
+  const item = document.createElement("li");
+  item.classList.add("item");
+
+  const itemImg = document.createElement("img");
+  itemImg.classList.add("item-img");
+  itemImg.src = itemInformations.src;
+  itemImg.alt = itemInformations.name;
+  item.appendChild(itemImg);
+
+  const itemContainer = document.createElement("div");
+  itemContainer.classList.add("item-container");
+  item.appendChild(itemContainer);
+
+  const itemHeader = document.createElement("div");
+  itemHeader.classList.add("item-header");
+  itemContainer.appendChild(itemHeader);
+
+  const itemInfos = document.createElement("div");
+  itemInfos.classList.add("item-infos");
+  itemHeader.appendChild(itemInfos);
+
+  const itemTitle = document.createElement("h3");
+  itemTitle.classList.add("item-title");
+  itemTitle.innerHTML = itemInformations.name;
+  itemInfos.appendChild(itemTitle);
+
+  const itemPrice = document.createElement("p");
+  itemPrice.classList.add("item-price");
+  itemPrice.innerHTML = itemInformations.price;
+  itemInfos.appendChild(itemPrice);
+
+  const itemCount = document.createElement("p");
+  itemCount.classList.add("item-count");
+  itemCount.innerHTML = itemInformations.count;
+  itemHeader.appendChild(itemCount);
+
+  const itemDescription = document.createElement("p");
+  itemDescription.classList.add("item-description");
+  itemDescription.innerHTML = itemInformations.description;
+  itemContainer.appendChild(itemDescription);
+
+  listItems.appendChild(item);
+}
+
+for (let i = 0; i < items.length; i++) {
+  createItem(items[i]);
+}

@@ -24,7 +24,6 @@ body {
   font-family: "Press Start 2P";
   height: 100%;
   background-image: url("./assets/background-opacity.png");
-<<<<<<< HEAD
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -50,40 +49,6 @@ header {
   display: flex;
   align-items: center;
   padding: 0.5rem;
-=======
-  max-height: 100vh;
-}
-
-header {
-  margin-bottom: 1rem;
-}
-
-header h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-}
-
-header img {
-  filter: invert(100%);
-}
-
-.menu {
-  display: none;
-}
-
-#username-score {
-  text-align: center;
-}
-
-#username-score h2 {
-  margin-bottom: 1rem;
-  font-size: 2rem;
-}
-
-#score-container {
->>>>>>> e6556ebaa3b8d54cfce9811975d96bc89a3dc4da
   background-color: var(--clr-background-black);
   border-bottom: 1px solid white;
 }
@@ -97,37 +62,10 @@ header h1 {
 }
 
 main {
-<<<<<<< HEAD
   padding: 1.5rem 1rem;
 }
 
 #main-top {
-=======
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 0.5fr;
-}
-
-/* #main-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 100vh;
-} */
-
-main img {
-  width: 150px;
-  height: 150px;
-  border: 3px solid white;
-  border-radius: 100%;
-  position: absolute;
-  top: 47%;
-  left: 25%;
-}
-
-.comessage {
-  background-color: var(--clr-background-black);
->>>>>>> e6556ebaa3b8d54cfce9811975d96bc89a3dc4da
   text-align: center;
   background-color: var(--clr-background-black);
   width: fit-content;
@@ -150,7 +88,6 @@ main img {
   font-size: 0.5rem;
 }
 
-<<<<<<< HEAD
 #cat {
   display: inline-block;
   position: absolute;
@@ -160,9 +97,6 @@ main img {
   left: 0;
   right: 0;
   width: clamp(15rem, 22vw, 18rem);
-=======
-footer {
->>>>>>> e6556ebaa3b8d54cfce9811975d96bc89a3dc4da
 }
 
 #grid {
@@ -212,16 +146,10 @@ footer {
   width: 100%;
   text-align: center;
   font-size: 0.5rem;
-  height: 0;
 }
 
 @media screen and (min-width: 768px) {
   body {
-<<<<<<< HEAD
-=======
-    background-repeat: initial;
-    background-size: cover;
->>>>>>> e6556ebaa3b8d54cfce9811975d96bc89a3dc4da
     display: flex;
   }
 
@@ -229,7 +157,6 @@ footer {
     width: 67%;
   }
 
-<<<<<<< HEAD
   #right-panel {
     width: 33%;
     visibility: visible;
@@ -308,26 +235,5 @@ footer {
 
   #grid #react {
     text-align: center;
-=======
-  #menu {
-    width: 34%;
-    background-color: black;
-    height: 100vh;
-  }
-  main {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    max-height: 65vh;
-    max-width: 50vw;
-    margin: auto;
-  }
-
-  main img {
-  }
-
-  footer {
-    position: fixed;
-    bottom: 0px;
->>>>>>> e6556ebaa3b8d54cfce9811975d96bc89a3dc4da
   }
 }

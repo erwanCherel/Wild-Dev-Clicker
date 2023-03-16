@@ -73,7 +73,7 @@ function createItem(itemInformations) {
 
   const itemPrice = document.createElement("p");
   itemPrice.classList.add("item-price");
-  itemPrice.innerHTML = itemInformations.price;
+  itemPrice.innerHTML = itemInformations.price + " XP";
   itemInfos.appendChild(itemPrice);
 
   const itemCount = document.createElement("p");
@@ -91,4 +91,42 @@ function createItem(itemInformations) {
 
 for (let i = 0; i < items.length; i++) {
   createItem(items[i]);
+}
+
+// définit le début du count du score et des items
+let scoreTotal = 0;
+
+// incrémente le score à chaque fois qu'on clique sur l'image du chat
+function clickCat() {
+  console.log(1);
+  scoreTotal = scoreTotal + 1;
+  document.querySelector('#scoreTotal').innerHTML = scoreTotal;
+}
+
+// toutes les 1000ms la fonction myCallBack est appelée, qui ajoute automatique X points d'xp en fonction des items qu'on a
+const intervalID = setInterval(myCallback, 1000, scoreTotal);
+
+
+
+let clicItems = document.querySelectorAll('li.item');
+let count = document.querySelectorAll('.item-count');
+
+// ajoute + 1 au count du html lorsqu'on clique sur l'item
+for (let i = 0; i<clicItems.length ; i++){
+  clicItems[i].addEventListener("click", () => {
+    console.log(items[i].count);
+    items[i].count = items[i].count + 1;
+    console.log(items[i].count);
+    count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
+    myCallback(items[i]);
+  });
+  
+}
+
+
+// incrémente le score en fonction des items qu'on possède
+function myCallback(parametre) {
+  console.log(scoreTotal)
+  scoreTotal = scoreTotal + parametre.count * 1;
+  document.querySelector('#scoreTotal').innerHTML = scoreTotal;
 }

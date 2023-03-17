@@ -16,95 +16,108 @@
   line-height: 1.5;
 }
 
-html {
-  height: 100%;
-}
-
 body {
   font-family: "Press Start 2P";
-  height: 100%;
   background-image: url("./assets/background-opacity.png");
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  max-height: 100%;
+  background-color: black;
+}
+
+#right-panel {
+  display: none;
   background-color: black;
 }
 
 #game-container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 15% 15% 50% 15% 5%;
   color: rgb(255, 252, 247);
 }
 
-#right-panel {
-  background-color: black;
-  visibility: hidden;
-  display: none;
-}
-
-#right-panel h3,
-p {
-  font-size: 0.75rem;
-}
-
-header {
+#game-container header {
+  grid-row: 1 / 2;
   display: flex;
   align-items: center;
-  padding: 0.5rem;
   background-color: var(--clr-background-black);
   border-bottom: 1px solid white;
 }
-header img {
+
+#game-container header img {
   filter: invert(100);
 }
-header h1 {
-  font-size: 2rem;
+
+#game-container header h1 {
+  font-size: 1rem;
   width: 100%;
   text-align: center;
 }
 
-main {
-  padding: 1.5rem 1rem;
-}
-
 #main-top {
+  grid-row: 2 / 3;
   text-align: center;
   background-color: var(--clr-background-black);
-  width: fit-content;
-  margin: auto;
-  padding: 0.75rem 1.5rem;
   border-radius: 1rem;
   border: 1px solid white;
+  width: fit-content;
+  margin: 0.5rem auto 0.5rem;
+  padding: 0.75rem 1.5rem;
 }
 
 #main-top h2 {
-  font-size: 2rem;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
 }
 
-#score {
-  font-size: 0.75rem;
-  margin-bottom: 0.25rem;
-}
-
-#xp-s {
+#main-top p {
   font-size: 0.5rem;
 }
 
+#scoreTotal {
+  font-size: 1rem;
+  margin-bottom: 0.1rem;
+}
+
+#xpS {
+  font-size: 0.5rem;
+}
+
+#game-container #main-middle {
+  grid-row: 3 / 4;
+}
+
 #cat {
-  display: inline-block;
+  width: 13rem;
   position: absolute;
-  margin-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  width: clamp(15rem, 22vw, 18rem);
+  left: calc(50% - 6.5rem);
+  top: calc((50% - 6.5rem));
+}
+
+#game-container #main-bottom {
+  grid-row: 4 / 5;
+}
+
+#main-bottom p {
+  border: 1px solid white;
+  width: fit-content;
+  margin: auto;
+  padding: 2rem 5rem;
+}
+
+#game-container footer {
+  grid-row: 5 / 6;
+  text-align: center;
+  font-size: 0.5rem;
 }
 
 #grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  height: 500px;
-  margin-top: 3rem;
+  grid-template-rows: repeat(5, 1fr);
+  height: 50vh;
+  margin: auto;
 }
 
 #grid li {
@@ -113,8 +126,7 @@ main {
 }
 
 #grid img {
-  margin-bottom: 0.5rem;
-  width: clamp(1.5rem, 5vw, 6rem);
+  width: clamp(3rem, 5vw, 4rem);
 }
 
 #html {
@@ -133,21 +145,6 @@ main {
   grid-area: 3/1/4/2;
 }
 
-#main-bottom p {
-  border: 1px solid white;
-  width: fit-content;
-  margin: auto;
-  padding: 2rem 10rem;
-}
-
-footer {
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-  text-align: center;
-  font-size: 0.5rem;
-}
-
 @media screen and (min-width: 768px) {
   body {
     display: flex;
@@ -155,6 +152,22 @@ footer {
 
   #game-container {
     width: 67%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 15% 15% 50% 15% 5%;
+    color: rgb(255, 252, 247);
+  }
+
+  #cat {
+    width: 16rem;
+    position: absolute;
+    left: calc((100% / 3) - 8rem);
+    top: calc((50% - 8rem));
+  }
+
+  #grid {
+    width: 75%;
   }
 
   #right-panel {
@@ -208,32 +221,5 @@ footer {
 
   #right-panel .item-count {
     font-size: 2rem;
-  }
-
-  #cat {
-    right: 33%;
-    margin-top: 0;
-  }
-
-  #grid {
-    margin-top: 5rem;
-  }
-
-  footer {
-    width: 67%;
-  }
-
-  #grid li {
-    margin: initial;
-    text-align: initial;
-  }
-
-  #grid #html,
-  #grid #sql {
-    text-align: right;
-  }
-
-  #grid #react {
-    text-align: center;
   }
 }

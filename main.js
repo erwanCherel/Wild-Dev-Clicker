@@ -105,20 +105,21 @@ function clickCat() {
 }
 
 // toutes les 1000ms la fonction myCallBack est appelée, qui ajoute automatique X points d'xp en fonction des items qu'on a
-const intervalID = setInterval(myCallback, 1000, scoreTotal);
+const intervalID = setInterval(myCallback, 10000, scoreTotal);
 
-
-
-let clickItems = document.querySelectorAll('li.item');
-let count = document.querySelectorAll('.item-count');
+const clickItems = document.querySelectorAll('li.item');
+const count = document.querySelectorAll('.item-count');
 
 // ajoute + 1 au count du html lorsqu'on clique sur l'item
 for (let i = 0; i<clickItems.length ; i++){
   clickItems[i].addEventListener("click", () => {
+    if(scoreTotal >= items[i].price) {
+      scoreTotal = scoreTotal - items[i].price;
     items[i].count = items[i].count + 1;
     count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
-    let numeroItem = i;
-    myCallback(numeroItem);
+    myCallback();
+    }
+    
   }); 
 }
 
@@ -126,15 +127,14 @@ for (let i = 0; i<clickItems.length ; i++){
 for (let i = 0; i<clickItems.length ; i++){
   clickItems[i].addEventListener("click", () => {
     //trouver un moyen de l'automatiser sinon ça bloque lorsqu'on n'a pas tous les articles de débloqués
-    xpS =+ items[0].count*items[0].price+items[1].count*items[1].price+items[2].count*items[2].price+items[3].count*items[3].price+items[4].count*items[4].price+items[5].count*items[5].price;
+    xpS =+ items[0].count*1+items[1].count*5+items[2].count*10+items[3].count*50+items[4].count*100;
     document.getElementById('xpS').innerHTML = xpS;
   });
 }
 
 // incrémente le score en fonction des items qu'on possède
-function myCallback(parametre) {
+function myCallback() {
   scoreTotal = scoreTotal + xpS;
-  document.querySelector('#scoreTotal').innerHTML = scoreTotal;
   document.querySelector('#scoreTotal').innerHTML = scoreTotal;
   document.querySelector('.score-html').innerHTML = items[0].count;
   document.querySelector('.score-css').innerHTML = items[1].count;

@@ -95,6 +95,7 @@ for (let i = 0; i < items.length; i++) {
 
 // définit le début du count du score et des items
 let scoreTotal = 0;
+let xpS = 0;
 
 // incrémente le score à chaque fois qu'on clique sur l'image du chat
 function clickCat() {
@@ -108,25 +109,36 @@ const intervalID = setInterval(myCallback, 1000, scoreTotal);
 
 
 
-let clicItems = document.querySelectorAll('li.item');
+let clickItems = document.querySelectorAll('li.item');
 let count = document.querySelectorAll('.item-count');
 
 // ajoute + 1 au count du html lorsqu'on clique sur l'item
-for (let i = 0; i<clicItems.length ; i++){
-  clicItems[i].addEventListener("click", () => {
-    console.log(items[i].count);
+for (let i = 0; i<clickItems.length ; i++){
+  clickItems[i].addEventListener("click", () => {
     items[i].count = items[i].count + 1;
-    console.log(items[i].count);
     count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
-    myCallback(items[i]);
-  });
-  
+    let numeroItem = i;
+    myCallback(numeroItem);
+  }); 
 }
 
+// configuration du nombre de points d'xp générés par seconde
+for (let i = 0; i<clickItems.length ; i++){
+  clickItems[i].addEventListener("click", () => {
+    //trouver un moyen de l'automatiser sinon ça bloque lorsqu'on n'a pas tous les articles de débloqués
+    xpS =+ items[0].count*items[0].price+items[1].count*items[1].price+items[2].count*items[2].price+items[3].count*items[3].price+items[4].count*items[4].price+items[5].count*items[5].price;
+    document.getElementById('xpS').innerHTML = xpS;
+  });
+}
 
 // incrémente le score en fonction des items qu'on possède
 function myCallback(parametre) {
-  console.log(scoreTotal)
-  scoreTotal = scoreTotal + parametre.count * 1;
+  scoreTotal = scoreTotal + xpS;
   document.querySelector('#scoreTotal').innerHTML = scoreTotal;
+  document.querySelector('#scoreTotal').innerHTML = scoreTotal;
+  document.querySelector('.score-html').innerHTML = items[0].count;
+  document.querySelector('.score-css').innerHTML = items[1].count;
+  document.querySelector('.score-javascript').innerHTML = items[2].count;
+  document.querySelector('.score-react').innerHTML = items[3].count;
+  document.querySelector('.score-sql').innerHTML = items[4].count;
 }

@@ -97,6 +97,12 @@ body {
   border: 2px solid white;
   border-radius: 100%;
   cursor: pointer;
+  box-shadow: 3px 3px 5px grey;
+}
+
+#cat:active {
+  top: calc((45% - 6.5rem + 3px));
+  box-shadow: none;
 }
 
 #game-container #main-bottom {
@@ -158,17 +164,16 @@ body {
 
   #game-container {
     width: 67%;
-    /* height: 100vh;
-    display: grid;
-    grid-template-columns: 100%;
-    /* grid-template-rows: 15% 15% 50% 15% 5%;
-    color: rgb(255, 252, 247); */
   }
   #cat {
     width: 16rem;
     position: absolute;
     left: calc((100% / 3) - 8rem);
     top: calc((43% - 8rem));
+  }
+
+  #cat:active {
+    top: calc((43% - 8rem + 3px));
   }
 
   #grid {
@@ -199,6 +204,7 @@ body {
     border-radius: 1rem;
     padding: 0.5rem;
     width: 80%;
+    box-shadow: 3px 3px 5px grey;
   }
 
   #right-panel .item-img {
@@ -212,6 +218,10 @@ body {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+  }
+
+  .disable {
+    opacity: 0.2;
   }
 
   #right-panel .item-header {

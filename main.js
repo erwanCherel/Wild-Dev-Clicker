@@ -4,42 +4,42 @@ const items = [
     name: "HTML",
     price: 15,
     count: 0,
-    description: "Gère le contenu de ta page WEB",
+    description: "Manage the content of your web page",
   },
   {
     src: "./assets/css.png",
     name: "CSS",
     price: 100,
     count: 0,
-    description: "Ajoute du style",
+    description: "Adds style",
   },
   {
     src: "./assets/js.png",
     name: "JS",
     price: 500,
     count: 0,
-    description: "Ajoute de l'interaction entre tes éléments",
+    description: "Add interaction between your elements",
   },
   {
     src: "./assets/react.png",
     name: "REACT",
     price: 2000,
     count: 0,
-    description: "Utilise les meilleures librairies",
+    description: "Use the best libraries",
   },
   {
     src: "./assets/sql.png",
     name: "SQL",
     price: 7000,
     count: 0,
-    description: "Apprends à gérer des bases de données",
+    description: "Learn how to manage databases",
   },
   {
     src: "./assets/dev.png",
     name: "DEV",
     price: 1000000,
     count: 0,
-    description: "Tu es maintenant un vrai DEV !",
+    description: "You are now a real DEV!",
   },
 ];
 
@@ -100,7 +100,6 @@ let xpS = 0;
 
 // incrémente le score à chaque fois qu'on clique sur l'image du chat
 function clickCat() {
-  console.log(1);
   scoreTotal = scoreTotal + 1;
   document.querySelector("#scoreTotal").innerHTML = scoreTotal;
   disableItem();
@@ -159,19 +158,46 @@ function disableItem() {
       clickItems[i].classList.add("disable");
     }
   }
-  if (items[0].count > 0) {
-    document.querySelector("#html").classList.remove("disable");
+  if (items[i].count > 0) {
+    clickItems[i].classList.remove("disable");
   }
-  if (items[1].count > 0) {
-    document.querySelector("#css").classList.remove("disable");
-  }
-  if (items[2].count > 0) {
-    document.querySelector("#javascript").classList.remove("disable");
-  }
-  if (items[3].count > 0) {
-    document.querySelector("#react").classList.remove("disable");
-  }
-  if (items[4].count > 0) {
-    document.querySelector("#sql").classList.remove("disable");
-  }
+
+  // if (items[0].count > 0) {
+  //   document.querySelector("#html").classList.remove("disable");
+  // }
+  // if (items[1].count > 0) {
+  //   document.querySelector("#css").classList.remove("disable");
+  // }
+  // if (items[2].count > 0) {
+  //   document.querySelector("#javascript").classList.remove("disable");
+  // }
+  // if (items[3].count > 0) {
+  //   document.querySelector("#react").classList.remove("disable");
+  // }
+  // if (items[4].count > 0) {
+  //   document.querySelector("#sql").classList.remove("disable");
+  // }
 }
+
+
+
+
+let mainBottom = document.getElementById('main-bottom');
+let punchline = document.getElementById('punchline');
+let setup = document.getElementById('setup');
+
+const joke = async () => {
+  let requestString = 'https://official-joke-api.appspot.com/jokes/programming/random';
+
+  let data = await fetch(requestString);
+
+  let response = await data.json();
+
+  setup.textContent = response[0].setup;
+  punchline.textContent = response[0].punchline;
+  
+}
+joke();
+const jokesInterval = setInterval(joke, 20000);
+
+

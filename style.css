@@ -109,11 +109,20 @@ body {
   grid-row: 4 / 5;
 }
 
-#main-bottom p {
+#main-bottom {
   border: 1px solid white;
   width: fit-content;
   margin: auto;
   padding: 2rem 5rem;
+  text-align: center;
+}
+
+#main-bottom p {
+  font-size: 0.8rem;
+}
+
+#main-bottom > p {
+  margin-bottom: 0.5rem;
 }
 
 #game-container footer {

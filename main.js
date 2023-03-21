@@ -142,3 +142,4 @@ function myCallback() {
   document.querySelector('.score-react').innerHTML = items[3].count;
   document.querySelector('.score-sql').innerHTML = items[4].count;
 }
+

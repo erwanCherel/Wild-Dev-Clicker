@@ -47,6 +47,7 @@ function createItem(itemInformations) {
   const listItems = document.querySelector("#right-panel ul");
   const item = document.createElement("li");
   item.classList.add("item");
+  item.classList.add("disable");
 
   const itemImg = document.createElement("img");
   itemImg.classList.add("item-img");
@@ -101,45 +102,76 @@ let xpS = 0;
 function clickCat() {
   console.log(1);
   scoreTotal = scoreTotal + 1;
-  document.querySelector('#scoreTotal').innerHTML = scoreTotal;
+  document.querySelector("#scoreTotal").innerHTML = scoreTotal;
+  disableItem();
 }
 
 // toutes les 1000ms la fonction myCallBack est appelée, qui ajoute automatique X points d'xp en fonction des items qu'on a
 const intervalID = setInterval(myCallback, 10000, scoreTotal);
 
-const clickItems = document.querySelectorAll('li.item');
-const count = document.querySelectorAll('.item-count');
+const clickItems = document.querySelectorAll("li.item");
+const count = document.querySelectorAll(".item-count");
 
 // ajoute + 1 au count du html lorsqu'on clique sur l'item
-for (let i = 0; i<clickItems.length ; i++){
+for (let i = 0; i < clickItems.length; i++) {
   clickItems[i].addEventListener("click", () => {
-    if(scoreTotal >= items[i].price) {
+    if (scoreTotal >= items[i].price) {
       scoreTotal = scoreTotal - items[i].price;
-    items[i].count = items[i].count + 1;
-    count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
-    myCallback();
+      items[i].count = items[i].count + 1;
+      count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
+      myCallback();
     }
-    
-  }); 
+  });
 }
 
 // configuration du nombre de points d'xp générés par seconde
-for (let i = 0; i<clickItems.length ; i++){
+for (let i = 0; i < clickItems.length; i++) {
   clickItems[i].addEventListener("click", () => {
     //trouver un moyen de l'automatiser sinon ça bloque lorsqu'on n'a pas tous les articles de débloqués
-    xpS =+ items[0].count*1+items[1].count*5+items[2].count*10+items[3].count*50+items[4].count*100;
-    document.getElementById('xpS').innerHTML = xpS;
+    xpS =
+      +items[0].count * 1 +
+      items[1].count * 5 +
+      items[2].count * 10 +
+      items[3].count * 50 +
+      items[4].count * 100;
+    document.getElementById("xpS").innerHTML = xpS;
   });
 }
 
 // incrémente le score en fonction des items qu'on possède
 function myCallback() {
   scoreTotal = scoreTotal + xpS;
-  document.querySelector('#scoreTotal').innerHTML = scoreTotal;
-  document.querySelector('.score-html').innerHTML = items[0].count;
-  document.querySelector('.score-css').innerHTML = items[1].count;
-  document.querySelector('.score-javascript').innerHTML = items[2].count;
-  document.querySelector('.score-react').innerHTML = items[3].count;
-  document.querySelector('.score-sql').innerHTML = items[4].count;
+  document.querySelector("#scoreTotal").innerHTML = scoreTotal;
+  document.querySelector(".score-html").innerHTML = items[0].count;
+  document.querySelector(".score-css").innerHTML = items[1].count;
+  document.querySelector(".score-javascript").innerHTML = items[2].count;
+  document.querySelector(".score-react").innerHTML = items[3].count;
+  document.querySelector(".score-sql").innerHTML = items[4].count;
+  disableItem();
 }
 
+// grise les items non selectionnables
+function disableItem() {
+  for (let i = 0; i < clickItems.length; i++) {
+    if (scoreTotal >= items[i].price) {
+      clickItems[i].classList.remove("disable");
+    } else {
+      clickItems[i].classList.add("disable");
+    }
+  }
+  if (items[0].count > 0) {
+    document.querySelector("#html").classList.remove("disable");
+  }
+  if (items[1].count > 0) {
+    document.querySelector("#css").classList.remove("disable");
+  }
+  if (items[2].count > 0) {
+    document.querySelector("#javascript").classList.remove("disable");
+  }
+  if (items[3].count > 0) {
+    document.querySelector("#react").classList.remove("disable");
+  }
+  if (items[4].count > 0) {
+    document.querySelector("#sql").classList.remove("disable");
+  }
+}

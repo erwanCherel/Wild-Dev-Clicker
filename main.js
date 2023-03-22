@@ -158,25 +158,22 @@ function disableItem() {
       clickItems[i].classList.add("disable");
     }
   }
-  if (items[i].count > 0) {
-    clickItems[i].classList.remove("disable");
-  }
 
-  // if (items[0].count > 0) {
-  //   document.querySelector("#html").classList.remove("disable");
-  // }
-  // if (items[1].count > 0) {
-  //   document.querySelector("#css").classList.remove("disable");
-  // }
-  // if (items[2].count > 0) {
-  //   document.querySelector("#javascript").classList.remove("disable");
-  // }
-  // if (items[3].count > 0) {
-  //   document.querySelector("#react").classList.remove("disable");
-  // }
-  // if (items[4].count > 0) {
-  //   document.querySelector("#sql").classList.remove("disable");
-  // }
+  if (items[0].count > 0) {
+    document.querySelector("#html").classList.remove("disable");
+  }
+  if (items[1].count > 0) {
+    document.querySelector("#css").classList.remove("disable");
+  }
+  if (items[2].count > 0) {
+    document.querySelector("#javascript").classList.remove("disable");
+  }
+  if (items[3].count > 0) {
+    document.querySelector("#react").classList.remove("disable");
+  }
+  if (items[4].count > 0) {
+    document.querySelector("#sql").classList.remove("disable");
+  }
 }
 
 
@@ -201,3 +198,61 @@ joke();
 const jokesInterval = setInterval(joke, 20000);
 
 
+//importer image
+function handleFiles(files) {
+  let imageType = /^image\//;
+  for (let i = 0; i < files.length; i++) {
+    let file = files[i];
+    if (!imageType.test(file.type)) {
+      alert("veuillez sélectionner une image");
+    } else {
+      if (i == 0) {
+        preview.innerHTML = "";
+      }
+      let img = document.querySelector("#cat");
+      // img.classList.add("obj");
+      let reader = new FileReader();
+      reader.onload = (function () {
+        return function (e) {
+          img.src = e.target.result;
+        };
+      })(img);
+
+      reader.readAsDataURL(file);
+    }
+  }
+}
+
+const settings = document.querySelector("#settings");
+//afficher settings
+const settingsIcon = document.querySelector("#settings-icon");
+settingsIcon.addEventListener("click", () => {
+  settings.style.display = "inline";
+});
+//quitter le menu settings
+const close = document.querySelector("#close-icon");
+close.addEventListener("click", () => {
+  settings.style.display = "none";
+});
+
+//récupération du pseudo
+const username = document.getElementById("user");
+const inputUser = document.getElementById("inputUsername");
+const usernameButton = document.getElementById("settingsButton");
+
+usernameButton.addEventListener("click", () => {
+  if (inputUser.value.length !== 0) {
+    username.innerHTML = inputUser.value;
+  } else {
+    const errorMessage = document.getElementById("error");
+    errorMessage.innerText = "Ton pseudo ne peut pas être vide.";
+  }
+});
+
+//controler l'audio
+const audio = document.getElementById("audioPlay");
+const muteIcon = document.getElementById("mute");
+muteIcon.addEventListener("click", () => {
+  audio.setAttribute("muted", false);
+  muteIcon.src = "./assets/volumeOn.svg";
+});

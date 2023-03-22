@@ -137,6 +137,7 @@ body {
 
 #cat {
   width: 13rem;
+  height: 13rem;
   position: absolute;
   left: calc(50% - 6.5rem);
   top: calc((45% - 6.5rem));
@@ -144,6 +145,10 @@ body {
   border-radius: 100%;
   cursor: pointer;
   box-shadow: 3px 3px 5px grey;
+}
+
+.mobile-disable {
+  opacity: 0.2;
 }
 
 #cat:active {
@@ -214,6 +219,7 @@ body {
   }
   #cat {
     width: 16rem;
+    height: 16rem;
     position: absolute;
     left: calc((100% / 3) - 8rem);
     top: calc((43% - 8rem));
@@ -221,6 +227,10 @@ body {
 
   #cat:active {
     top: calc((43% - 8rem + 3px));
+  }
+
+  .disable {
+    opacity: 0.2;
   }
 
   #grid {
@@ -265,10 +275,6 @@ body {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-  }
-
-  .disable {
-    opacity: 0.2;
   }
 
   #right-panel .item-header {

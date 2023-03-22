@@ -110,6 +110,7 @@ const intervalID = setInterval(myCallback, 10000, scoreTotal);
 
 const clickItems = document.querySelectorAll("li.item");
 const count = document.querySelectorAll(".item-count");
+const gridItems = document.querySelectorAll("#grid li");
 
 // ajoute + 1 au count du html lorsqu'on clique sur l'item
 for (let i = 0; i < clickItems.length; i++) {
@@ -123,9 +124,33 @@ for (let i = 0; i < clickItems.length; i++) {
   });
 }
 
+for (let i = 0; i < gridItems.length; i++) {
+  gridItems[i].addEventListener("click", () => {
+    if (scoreTotal >= items[i].price) {
+      scoreTotal = scoreTotal - items[i].price;
+      items[i].count = items[i].count + 1;
+      count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
+      myCallback();
+    }
+  });
+}
+
 // configuration du nombre de points d'xp générés par seconde
 for (let i = 0; i < clickItems.length; i++) {
   clickItems[i].addEventListener("click", () => {
+    //trouver un moyen de l'automatiser sinon ça bloque lorsqu'on n'a pas tous les articles de débloqués
+    xpS =
+      +items[0].count * 1 +
+      items[1].count * 5 +
+      items[2].count * 10 +
+      items[3].count * 50 +
+      items[4].count * 100;
+    document.getElementById("xpS").innerHTML = xpS;
+  });
+}
+
+for (let i = 0; i < gridItems.length; i++) {
+  gridItems[i].addEventListener("click", () => {
     //trouver un moyen de l'automatiser sinon ça bloque lorsqu'on n'a pas tous les articles de débloqués
     xpS =
       +items[0].count * 1 +
@@ -159,6 +184,14 @@ function disableItem() {
     }
   }
 
+  for (let i = 0; i < gridItems.length; i++) {
+    if (scoreTotal >= items[i].price) {
+      gridItems[i].classList.remove("mobile-disable");
+    } else {
+      gridItems[i].classList.add("mobile-disable");
+    }
+  }
+
   if (items[0].count > 0) {
     document.querySelector("#html").classList.remove("disable");
   }
@@ -176,13 +209,13 @@ function disableItem() {
   }
 }
 
-
-let mainBottom = document.getElementById('main-bottom');
-let punchline = document.getElementById('punchline');
-let setup = document.getElementById('setup');
+let mainBottom = document.getElementById("main-bottom");
+let punchline = document.getElementById("punchline");
+let setup = document.getElementById("setup");
 
 const joke = async () => {
-  let requestString = 'https://official-joke-api.appspot.com/jokes/programming/random';
+  let requestString =
+    "https://official-joke-api.appspot.com/jokes/programming/random";
 
   let data = await fetch(requestString);
 
@@ -190,11 +223,9 @@ const joke = async () => {
 
   setup.textContent = response[0].setup;
   punchline.textContent = response[0].punchline;
-  
-}
+};
 joke();
 const jokesInterval = setInterval(joke, 20000);
-
 
 //importer image
 function handleFiles(files) {
@@ -243,7 +274,13 @@ usernameButton.addEventListener("click", () => {
     username.innerHTML = inputUser.value;
   } else {
     const errorMessage = document.getElementById("error");
-    errorMessage.innerText = "Ton pseudo ne peut pas être vide.";
+    errorMessage.innerText = "Ton pseudo ne peut pas être vide";
+  }
+});
+
+inputUser.addEventListener("keydown", (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
   }
 });
 
@@ -251,6 +288,11 @@ usernameButton.addEventListener("click", () => {
 const audio = document.getElementById("audioPlay");
 const muteIcon = document.getElementById("mute");
 muteIcon.addEventListener("click", () => {
-  audio.setAttribute("muted", false);
-  muteIcon.src = "./assets/volumeOn.svg";
+  if (muteIcon.src === "http://127.0.0.1:5500/assets/mute.svg") {
+    audio.muted = false;
+    muteIcon.src = "./assets/volumeOn.svg";
+  } else {
+    muteIcon.src = "./assets/mute.svg";
+    audio.muted = true;
+  }
 });

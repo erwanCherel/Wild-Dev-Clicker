@@ -107,7 +107,6 @@ function clickCat() {
 
 // toutes les 1000ms la fonction myCallBack est appelée, qui ajoute automatique X points d'xp en fonction des items qu'on a
 const intervalID = setInterval(myCallback, 10000, scoreTotal);
-
 const clickItems = document.querySelectorAll("li.item");
 const count = document.querySelectorAll(".item-count");
 const gridItems = document.querySelectorAll("#grid li");
@@ -124,15 +123,17 @@ for (let i = 0; i < clickItems.length; i++) {
   });
 }
 
-for (let i = 0; i < gridItems.length; i++) {
-  gridItems[i].addEventListener("click", () => {
-    if (scoreTotal >= items[i].price) {
-      scoreTotal = scoreTotal - items[i].price;
-      items[i].count = items[i].count + 1;
-      count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
-      myCallback();
-    }
-  });
+if (screen.width < 768) {
+  for (let i = 0; i < gridItems.length; i++) {
+    gridItems[i].addEventListener("click", () => {
+      if (scoreTotal >= items[i].price) {
+        scoreTotal = scoreTotal - items[i].price;
+        items[i].count = items[i].count + 1;
+        count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
+        myCallback();
+      }
+    });
+  }
 }
 
 // configuration du nombre de points d'xp générés par seconde
@@ -175,6 +176,13 @@ function myCallback() {
 }
 
 // grise les items non selectionnables
+if (screen.width > 768) {
+  document.querySelector("#html").classList.remove("mobile-disable");
+  document.querySelector("#css").classList.remove("mobile-disable");
+  document.querySelector("#js").classList.remove("mobile-disable");
+  document.querySelector("#javascript").classList.remove("mobile-disable");
+  document.querySelector("#sql").classList.remove("mobile-disable");
+}
 function disableItem() {
   for (let i = 0; i < clickItems.length; i++) {
     if (scoreTotal >= items[i].price) {
@@ -183,12 +191,13 @@ function disableItem() {
       clickItems[i].classList.add("disable");
     }
   }
-
-  for (let i = 0; i < gridItems.length; i++) {
-    if (scoreTotal >= items[i].price) {
-      gridItems[i].classList.remove("mobile-disable");
-    } else {
-      gridItems[i].classList.add("mobile-disable");
+  if (screen.width < 768) {
+    for (let i = 0; i < gridItems.length; i++) {
+      if (scoreTotal >= items[i].price) {
+        gridItems[i].classList.remove("mobile-disable");
+      } else {
+        gridItems[i].classList.add("mobile-disable");
+      }
     }
   }
 

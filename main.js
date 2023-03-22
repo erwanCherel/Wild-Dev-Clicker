@@ -112,6 +112,25 @@ const count = document.querySelectorAll(".item-count");
 const gridItems = document.querySelectorAll("#grid li");
 
 // ajoute + 1 au count du html lorsqu'on clique sur l'item
+
+if (screen.width < 768) {
+  for (let i = 0; i < gridItems.length; i++) {
+    gridItems[i].addEventListener("click", () => {
+      if (scoreTotal >= items[i].price) {
+        scoreTotal = scoreTotal - items[i].price;
+        items[i].price = Math.ceil(items[i].price * 1.1);
+        console.log(items[i].price);
+        const newPrice = items[i].price;
+        document.getElementsByClassName("item-price")[i].innerHTML =
+          newPrice + " XP";
+        items[i].count = items[i].count + 1;
+        count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
+        myCallback();
+      }
+    });
+  }
+}
+
 for (let i = 0; i < clickItems.length; i++) {
   clickItems[i].addEventListener("click", () => {
     if (scoreTotal >= items[i].price) {
@@ -126,29 +145,6 @@ for (let i = 0; i < clickItems.length; i++) {
       myCallback();
     }
   });
-}
-for (let i = 0; i < gridItems.length; i++) {
-  gridItems[i].addEventListener("click", () => {
-    if (scoreTotal >= items[i].price) {
-      scoreTotal = scoreTotal - items[i].price;
-      items[i].count = items[i].count + 1;
-      count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
-      myCallback();
-    }
-  });
-}
-
-if (screen.width < 768) {
-  for (let i = 0; i < gridItems.length; i++) {
-    gridItems[i].addEventListener("click", () => {
-      if (scoreTotal >= items[i].price) {
-        scoreTotal = scoreTotal - items[i].price;
-        items[i].count = items[i].count + 1;
-        count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
-        myCallback();
-      }
-    });
-  }
 }
 
 // configuration du nombre de points d'xp générés par seconde
@@ -199,13 +195,6 @@ if (screen.width > 768) {
   document.querySelector("#sql").classList.remove("mobile-disable");
 }
 function disableItem() {
-  for (let i = 0; i < clickItems.length; i++) {
-    if (scoreTotal >= items[i].price) {
-      clickItems[i].classList.remove("disable");
-    } else {
-      clickItems[i].classList.add("disable");
-    }
-  }
   if (screen.width < 768) {
     for (let i = 0; i < gridItems.length; i++) {
       if (scoreTotal >= items[i].price) {
@@ -213,6 +202,13 @@ function disableItem() {
       } else {
         gridItems[i].classList.add("mobile-disable");
       }
+    }
+  }
+  for (let i = 0; i < clickItems.length; i++) {
+    if (scoreTotal >= items[i].price) {
+      clickItems[i].classList.remove("disable");
+    } else {
+      clickItems[i].classList.add("disable");
     }
   }
 

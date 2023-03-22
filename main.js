@@ -333,11 +333,12 @@ inputUser.addEventListener("keydown", (e) => {
 const audio = document.getElementById("audioPlay");
 const muteIcon = document.getElementById("mute");
 muteIcon.addEventListener("click", () => {
-  if (muteIcon.src === "./assets/mute.svg") {
-    audio.muted = false;
+  console.log(audio);
+  if (muteIcon.src.includes("/assets/mute.svg")) {
+    audio.play();
     muteIcon.src = "./assets/volumeOn.svg";
   } else {
+    audio.pause();
     muteIcon.src = "./assets/mute.svg";
-    audio.muted = true;
   }
 });

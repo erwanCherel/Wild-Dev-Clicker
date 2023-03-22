@@ -9,13 +9,7 @@
     <script src="./main.js" defer></script>
   </head>
   <body>
-    <audio
-      id="audioPlay"
-      src="./assets/music.mp3"
-      autoplay
-      loop
-      muted="true"
-    ></audio>
+    <audio id="audioPlay" src="./assets/music.mp3" loop></audio>
     <section id="game-container">
       <header>
         <img
@@ -47,7 +41,6 @@
                 type="file"
                 onchange="handleFiles(files)"
                 id="upload"
-                multiple
                 name="file"
               />
             </div>
@@ -62,7 +55,7 @@
         <h2 id="user">UserName</h2>
         <div id="username-scores">
           <p><span id="scoreTotal">0</span> XP</p>
-          <p><span id="xpS">0</span> xp/s</p>
+          <p><span id="xpS">0</span> xp/10s</p>
         </div>
       </div>
       <div id="main-middle">

@@ -31,16 +31,18 @@
             width="40px"
           />
           <div id="musicControl">
-            <p>Activer la musique :</p>
+            <p>Enable music :</p>
             <img id="mute" src="./assets/mute.svg" />
           </div>
           <form>
-            <label for="UserName" id="username">Choisis ton pseudo :</label>
+            <label for="UserName" id="username">Choose a username :</label>
             <input type="text" id="inputUsername" placeholder="Xavier" />
-            <input type="button" value="Valider" id="settingsButton" />
+            <input type="button" value="Submit" id="settingsButton" />
             <div id="error"></div>
             <div id="imgSelect">
-              <label for="upload" id="imgPick">Choisis ton image</label>
+              <label for="upload" id="imgPick"
+                >Upload your clicker-picture</label
+              >
               <input
                 type="file"
                 onchange="handleFiles(files)"

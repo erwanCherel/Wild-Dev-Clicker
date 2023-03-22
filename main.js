@@ -278,13 +278,12 @@ function handleFiles(files) {
   for (let i = 0; i < files.length; i++) {
     let file = files[i];
     if (!imageType.test(file.type)) {
-      alert("veuillez sélectionner une image");
+      alert("please select a picture");
     } else {
       if (i == 0) {
         preview.innerHTML = "";
       }
       let img = document.querySelector("#cat");
-      // img.classList.add("obj");
       let reader = new FileReader();
       reader.onload = (function () {
         return function (e) {
@@ -320,7 +319,7 @@ usernameButton.addEventListener("click", () => {
     username.innerHTML = inputUser.value;
     errorMessage.innerText = "";
   } else {
-    errorMessage.innerText = "Ton pseudo ne peut pas être vide";
+    errorMessage.innerText = "Your username cannot be empty";
   }
 });
 

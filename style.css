@@ -16,6 +16,11 @@
   line-height: 1.5;
 }
 
+*::selection {
+  color: #010100;
+  background: #fefeff;
+}
+
 body {
   font-family: "Press Start 2P";
   background-image: url("./assets/background-opacity.png");

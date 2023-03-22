@@ -116,6 +116,20 @@ for (let i = 0; i < clickItems.length; i++) {
   clickItems[i].addEventListener("click", () => {
     if (scoreTotal >= items[i].price) {
       scoreTotal = scoreTotal - items[i].price;
+      items[i].price = Math.ceil(items[i].price * 1.1);
+      console.log(items[i].price);
+      const newPrice = items[i].price;
+      document.getElementsByClassName('item-price')[i].innerHTML = newPrice + "XP";
+      items[i].count = items[i].count + 1;
+      count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
+      myCallback();
+    }
+  });
+}
+for (let i = 0; i < gridItems.length; i++) {
+  gridItems[i].addEventListener("click", () => {
+    if (scoreTotal >= items[i].price) {
+      scoreTotal = scoreTotal - items[i].price;
       items[i].count = items[i].count + 1;
       count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
       myCallback();
@@ -198,6 +212,14 @@ function disableItem() {
       } else {
         gridItems[i].classList.add("mobile-disable");
       }
+    }
+  }
+
+  for (let i = 0; i < gridItems.length; i++) {
+    if (scoreTotal >= items[i].price) {
+      gridItems[i].classList.remove("mobile-disable");
+    } else {
+      gridItems[i].classList.add("mobile-disable");
     }
   }
 
@@ -305,3 +327,4 @@ muteIcon.addEventListener("click", () => {
     audio.muted = true;
   }
 });
+

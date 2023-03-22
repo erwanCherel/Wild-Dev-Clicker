@@ -112,14 +112,12 @@ const count = document.querySelectorAll(".item-count");
 const gridItems = document.querySelectorAll("#grid li");
 
 // ajoute + 1 au count du html lorsqu'on clique sur l'item
-
-if (screen.width < 768) {
+function gridItemsPrice() {
   for (let i = 0; i < gridItems.length; i++) {
     gridItems[i].addEventListener("click", () => {
       if (scoreTotal >= items[i].price) {
         scoreTotal = scoreTotal - items[i].price;
         items[i].price = Math.ceil(items[i].price * 1.1);
-        console.log(items[i].price);
         const newPrice = items[i].price;
         document.getElementsByClassName("item-price")[i].innerHTML =
           newPrice + " XP";
@@ -131,20 +129,27 @@ if (screen.width < 768) {
   }
 }
 
-for (let i = 0; i < clickItems.length; i++) {
-  clickItems[i].addEventListener("click", () => {
-    if (scoreTotal >= items[i].price) {
-      scoreTotal = scoreTotal - items[i].price;
-      items[i].price = Math.ceil(items[i].price * 1.1);
-      console.log(items[i].price);
-      const newPrice = items[i].price;
-      document.getElementsByClassName("item-price")[i].innerHTML =
-        newPrice + " XP";
-      items[i].count = items[i].count + 1;
-      count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
-      myCallback();
-    }
-  });
+function clickItemsPrice() {
+  for (let i = 0; i < clickItems.length; i++) {
+    clickItems[i].addEventListener("click", () => {
+      if (scoreTotal >= items[i].price) {
+        scoreTotal = scoreTotal - items[i].price;
+        items[i].price = Math.ceil(items[i].price * 1.1);
+        const newPrice = items[i].price;
+        document.getElementsByClassName("item-price")[i].innerHTML =
+          newPrice + " XP";
+        items[i].count = items[i].count + 1;
+        count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
+        myCallback();
+      }
+    });
+  }
+}
+
+if (screen.width < 768) {
+  gridItemsPrice();
+} else {
+  clickItemsPrice();
 }
 
 // configuration du nombre de points d'xp générés par seconde
@@ -187,13 +192,33 @@ function myCallback() {
 }
 
 // grise les items non selectionnables
-if (screen.width > 768) {
+
+function removeMobileDisable() {
   document.querySelector("#html").classList.remove("mobile-disable");
   document.querySelector("#css").classList.remove("mobile-disable");
   document.querySelector("#javascript").classList.remove("mobile-disable");
   document.querySelector("#react").classList.remove("mobile-disable");
   document.querySelector("#sql").classList.remove("mobile-disable");
 }
+if (screen.width > 768) {
+  removeMobileDisable();
+}
+
+window.addEventListener("resize", disableItem());
+window.addEventListener("resize", () => {
+  if (screen.width < 768) {
+    gridItemsPrice();
+    document.querySelector("#html").classList.add("mobile-disable");
+    document.querySelector("#css").classList.add("mobile-disable");
+    document.querySelector("#javascript").classList.add("mobile-disable");
+    document.querySelector("#react").classList.add("mobile-disable");
+    document.querySelector("#sql").classList.add("mobile-disable");
+  } else {
+    clickItemsPrice();
+    removeMobileDisable();
+  }
+});
+
 function disableItem() {
   if (screen.width < 768) {
     for (let i = 0; i < gridItems.length; i++) {
@@ -288,12 +313,13 @@ close.addEventListener("click", () => {
 const username = document.getElementById("user");
 const inputUser = document.getElementById("inputUsername");
 const usernameButton = document.getElementById("settingsButton");
+const errorMessage = document.getElementById("error");
 
 usernameButton.addEventListener("click", () => {
   if (inputUser.value.length !== 0) {
     username.innerHTML = inputUser.value;
+    errorMessage.innerText = "";
   } else {
-    const errorMessage = document.getElementById("error");
     errorMessage.innerText = "Ton pseudo ne peut pas être vide";
   }
 });
@@ -308,7 +334,7 @@ inputUser.addEventListener("keydown", (e) => {
 const audio = document.getElementById("audioPlay");
 const muteIcon = document.getElementById("mute");
 muteIcon.addEventListener("click", () => {
-  if (muteIcon.src === "http://127.0.0.1:5500/assets/mute.svg") {
+  if (muteIcon.src === "./assets/mute.svg") {
     audio.muted = false;
     muteIcon.src = "./assets/volumeOn.svg";
   } else {

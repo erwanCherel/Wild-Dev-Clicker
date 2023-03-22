@@ -119,7 +119,8 @@ for (let i = 0; i < clickItems.length; i++) {
       items[i].price = Math.ceil(items[i].price * 1.1);
       console.log(items[i].price);
       const newPrice = items[i].price;
-      document.getElementsByClassName('item-price')[i].innerHTML = newPrice + "XP";
+      document.getElementsByClassName("item-price")[i].innerHTML =
+        newPrice + " XP";
       items[i].count = items[i].count + 1;
       count[i].innerHTML = parseInt(count[i].innerHTML) + 1;
       myCallback();
@@ -193,8 +194,8 @@ function myCallback() {
 if (screen.width > 768) {
   document.querySelector("#html").classList.remove("mobile-disable");
   document.querySelector("#css").classList.remove("mobile-disable");
-  document.querySelector("#js").classList.remove("mobile-disable");
   document.querySelector("#javascript").classList.remove("mobile-disable");
+  document.querySelector("#react").classList.remove("mobile-disable");
   document.querySelector("#sql").classList.remove("mobile-disable");
 }
 function disableItem() {
@@ -212,14 +213,6 @@ function disableItem() {
       } else {
         gridItems[i].classList.add("mobile-disable");
       }
-    }
-  }
-
-  for (let i = 0; i < gridItems.length; i++) {
-    if (scoreTotal >= items[i].price) {
-      gridItems[i].classList.remove("mobile-disable");
-    } else {
-      gridItems[i].classList.add("mobile-disable");
     }
   }
 
@@ -327,4 +320,3 @@ muteIcon.addEventListener("click", () => {
     audio.muted = true;
   }
 });
-

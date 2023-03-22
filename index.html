@@ -9,13 +9,55 @@
     <script src="./main.js" defer></script>
   </head>
   <body>
+    <audio
+      id="audioPlay"
+      src="./assets/music.mp3"
+      autoplay
+      loop
+      muted="true"
+    ></audio>
     <section id="game-container">
       <header>
-        <img src="./assets/settings-icon.svg" alt="Settings icon" />
+        <img
+          src="./assets/settings-icon.svg"
+          alt="Settings icon"
+          id="settings-icon"
+        />
+        <div id="settings">
+          <img
+            src="./assets/close.svg"
+            alt="close icon"
+            id="close-icon"
+            width="40px"
+          />
+          <div id="musicControl">
+            <p>Activer la musique :</p>
+            <img id="mute" src="./assets/mute.svg" />
+          </div>
+          <form>
+            <label for="UserName" id="username">Choisis ton pseudo :</label>
+            <input type="text" id="inputUsername" placeholder="Xavier" />
+            <input type="button" value="Valider" id="settingsButton" />
+            <div id="error"></div>
+            <div>
+              <label for="upload" id="imgPick">Choisis ton image</label>
+              <input
+                type="file"
+                onchange="handleFiles(files)"
+                id="upload"
+                multiple
+                name="file"
+              />
+            </div>
+            <div>
+              <label for="upload"><span id="preview"></span></label>
+            </div>
+          </form>
+        </div>
         <h1>Wild Dev Clicker</h1>
       </header>
       <div id="main-top">
-        <h2>UserName</h2>
+        <h2 id="user">UserName</h2>
         <div id="username-scores">
           <p><span id="scoreTotal">0</span> XP</p>
           <p><span id="xpS">0</span> xp/s</p>

@@ -24,6 +24,24 @@ body {
   background-color: black;
 }
 
+#error {
+  font-family: "Courier New", Courier, monospace;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+#upload {
+  display: none;
+}
+
+#imgPick {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
 #right-panel {
   display: none;
   background-color: black;
@@ -45,9 +63,29 @@ body {
   border-bottom: 1px solid white;
 }
 
+#settings {
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  width: 60%;
+  height: 50%;
+  background-color: white;
+  color: black;
+  z-index: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  display: none;
+}
+
 #game-container header img {
   filter: invert(100);
   cursor: pointer;
+}
+
+#close-icon {
+  background-color: white;
+  position: relative;
+  left: calc(100% - 40px);
 }
 
 #game-container header h1 {
@@ -56,6 +94,14 @@ body {
   text-align: center;
 }
 
+#mute {
+  background-color: white;
+}
+
+#musicControl {
+  display: flex;
+  align-items: center;
+}
 #main-top {
   grid-row: 2 / 3;
   text-align: center;
@@ -64,12 +110,12 @@ body {
   border: 1px solid white;
   margin: 0.5rem auto 0.5rem;
   padding: 1rem;
+  box-shadow: 3px 3px 5px grey;
 }
 
 #main-top h2 {
   font-size: 1rem;
   margin-bottom: 0.3rem;
-  cursor: pointer;
 }
 
 #main-top p {
@@ -114,6 +160,7 @@ body {
   width: fit-content;
   margin: auto;
   padding: 2rem 5rem;
+  box-shadow: 3px 3px 5px grey;
 }
 
 #game-container footer {

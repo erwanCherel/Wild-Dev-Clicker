@@ -177,8 +177,6 @@ function disableItem() {
 }
 
 
-
-
 let mainBottom = document.getElementById('main-bottom');
 let punchline = document.getElementById('punchline');
 let setup = document.getElementById('setup');

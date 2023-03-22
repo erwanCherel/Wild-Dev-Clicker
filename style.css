@@ -16,6 +16,11 @@
   line-height: 1.5;
 }
 
+*::selection {
+  color: #010100;
+  background: #fefeff;
+}
+
 body {
   font-family: "Press Start 2P";
   background-image: url("./assets/background-opacity.png");
@@ -40,6 +45,13 @@ body {
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px grey;
+}
+
+#imgSelect {
+  text-align: center;
 }
 
 #right-panel {
@@ -66,15 +78,53 @@ body {
 #settings {
   position: absolute;
   top: 25%;
-  left: 20%;
-  width: 60%;
+  left: 10%;
+  width: 80%;
   height: 50%;
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
   z-index: 1;
   border-radius: 10px;
+  border: solid white 1px;
+  box-shadow: 3px 3px 5px grey;
   overflow: hidden;
   display: none;
+}
+
+#musicControl p {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+#mute {
+  background-color: white;
+  margin-left: 40%;
+  margin-bottom: 0.5rem;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+}
+
+form label {
+  font-size: 0.85rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+#inputUsername,
+#settingsButton {
+  width: 60%;
+  margin: auto;
+  border-radius: 10px;
+}
+
+input {
+  text-align: center;
 }
 
 #game-container header img {
@@ -94,14 +144,6 @@ body {
   text-align: center;
 }
 
-#mute {
-  background-color: white;
-}
-
-#musicControl {
-  display: flex;
-  align-items: center;
-}
 #main-top {
   grid-row: 2 / 3;
   text-align: center;
@@ -137,6 +179,7 @@ body {
 
 #cat {
   width: 13rem;
+  height: 13rem;
   position: absolute;
   left: calc(50% - 6.5rem);
   top: calc((45% - 6.5rem));
@@ -144,6 +187,10 @@ body {
   border-radius: 100%;
   cursor: pointer;
   box-shadow: 3px 3px 5px grey;
+}
+
+.mobile-disable {
+  opacity: 0.2;
 }
 
 #cat:active {
@@ -157,10 +204,19 @@ body {
 
 #main-bottom {
   border: 1px solid white;
-  width: fit-content;
-  margin: auto;
-  padding: 2rem 5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   box-shadow: 3px 3px 5px grey;
+  font-size: 16px;
+  text-align: center;
+  background-color: black;
+}
+
+#main-bottom p {
+  font-size: 0.6rem;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 #game-container footer {
@@ -214,6 +270,7 @@ body {
   }
   #cat {
     width: 16rem;
+    height: 16rem;
     position: absolute;
     left: calc((100% / 3) - 8rem);
     top: calc((43% - 8rem));
@@ -223,12 +280,37 @@ body {
     top: calc((43% - 8rem + 3px));
   }
 
+  .disable {
+    opacity: 0.2;
+  }
+
   #grid {
     width: 75%;
   }
 
   #grid li {
     cursor: initial;
+  }
+
+  #settings {
+    left: 2.83%;
+    width: 60%;
+  }
+
+  #mute {
+    background-color: white;
+    margin-left: 47%;
+  }
+
+  #main-bottom p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+  }
+
+  #setup,
+  #punchline {
+    margin-top: 16px;
   }
 
   #right-panel {
@@ -267,10 +349,6 @@ body {
     cursor: pointer;
   }
 
-  .disable {
-    opacity: 0.2;
-  }
-
   #right-panel .item-header {
     display: flex;
     justify-content: space-between;
@@ -288,5 +366,9 @@ body {
 
   #right-panel .item-count {
     font-size: 2rem;
+  }
+
+  footer {
+    bottom: 0;
   }
 }

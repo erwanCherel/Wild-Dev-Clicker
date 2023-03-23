@@ -320,6 +320,7 @@ usernameButton.addEventListener("click", () => {
     errorMessage.innerText = "";
   } else {
     errorMessage.innerText = "Your username cannot be empty";
+    errorMessage.style.fontSize = "10px";
   }
 });
 
@@ -341,4 +342,22 @@ muteIcon.addEventListener("click", () => {
     audio.pause();
     muteIcon.src = "./assets/mute.svg";
   }
+});
+
+//afficher +1xp au clic
+const image = document.querySelector("#cat");
+const body = document.querySelector("body");
+image.addEventListener("click", (e) => {
+  const newDiv = document.createElement("div");
+  newDiv.classList.add("xpOnClick");
+  body.appendChild(newDiv);
+  let x = e.clientX;
+  let y = e.clientY - 30;
+  let z = e.clientY - 100;
+  newDiv.innerHTML = "+ 1 XP";
+  newDiv.style.left = x + "px";
+  newDiv.style.top = y + "px";
+  setTimeout(() => {
+    body.removeChild(newDiv);
+  }, 2000);
 });

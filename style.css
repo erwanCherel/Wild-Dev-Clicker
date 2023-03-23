@@ -48,6 +48,31 @@ body {
   margin: auto;
   border-radius: 10px;
   box-shadow: 3px 3px 5px grey;
+  font-size: 0.6rem;
+}
+
+.xpOnClick {
+  position: absolute;
+  color: white;
+  font-size: 0.5rem;
+  z-index: 1;
+  animation: moveToTheTop 2s;
+}
+
+@keyframes moveToTheTop {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(0, -100px);
+    opacity: 0;
+  }
 }
 
 #imgSelect {
@@ -83,7 +108,7 @@ body {
   height: 50%;
   background-color: black;
   color: white;
-  z-index: 1;
+  z-index: 2;
   border-radius: 10px;
   border: solid white 1px;
   box-shadow: 3px 3px 5px grey;
@@ -295,6 +320,18 @@ input {
   #settings {
     left: 2.83%;
     width: 60%;
+    animation: afficheSettings 0.6s;
+  }
+
+  @keyframes afficheSettings {
+    0% {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   #mute {

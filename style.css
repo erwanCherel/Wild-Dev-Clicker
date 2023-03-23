@@ -5,6 +5,11 @@
 
 :root {
   --clr-background-black: hsla(0, 0%, 0%, 0.7);
+  --font-press-start: "Press Start 2P";
+  --box-shadow: 3px 3px 5px grey;
+  --background-black: black;
+  --background-white: white;
+  --border-white: 1px solid white;
 }
 
 * {
@@ -22,11 +27,11 @@
 }
 
 body {
-  font-family: "Press Start 2P";
+  font-family: var(--font-press-start);
   background-image: url("./assets/background-opacity.png");
   background-size: cover;
   max-height: 100%;
-  background-color: black;
+  background-color: var(--background-black);
 }
 
 #error {
@@ -47,7 +52,7 @@ body {
   cursor: pointer;
   margin: auto;
   border-radius: 10px;
-  box-shadow: 3px 3px 5px grey;
+  box-shadow: var(--box-shadow);
   font-size: 0.6rem;
 }
 
@@ -81,7 +86,7 @@ body {
 
 #right-panel {
   display: none;
-  background-color: black;
+  background-color: var(--background-black);
 }
 
 #game-container {
@@ -97,7 +102,7 @@ body {
   display: flex;
   align-items: center;
   background-color: var(--clr-background-black);
-  border-bottom: 1px solid white;
+  border-bottom: var(--border-white);
 }
 
 #settings {
@@ -106,12 +111,12 @@ body {
   left: 10%;
   width: 80%;
   height: 50%;
-  background-color: black;
+  background-color: var(--background-black);
   color: white;
   z-index: 2;
   border-radius: 10px;
-  border: solid white 1px;
-  box-shadow: 3px 3px 5px grey;
+  border: var(--border-white);
+  box-shadow: var(--box-shadow);
   overflow: hidden;
   display: none;
 }
@@ -125,7 +130,7 @@ body {
 }
 
 #mute {
-  background-color: white;
+  background-color: var(--background-white);
   margin-left: 40%;
   margin-bottom: 0.5rem;
 }
@@ -158,7 +163,7 @@ input {
 }
 
 #close-icon {
-  background-color: white;
+  background-color: var(--background-white);
   position: relative;
   left: calc(100% - 40px);
 }
@@ -174,10 +179,10 @@ input {
   text-align: center;
   background-color: var(--clr-background-black);
   border-radius: 1rem;
-  border: 1px solid white;
+  border: var(--border-white);
   margin: 0.5rem auto 0.5rem;
   padding: 1rem;
-  box-shadow: 3px 3px 5px grey;
+  box-shadow: var(--box-shadow);
 }
 
 #main-top h2 {
@@ -211,7 +216,7 @@ input {
   border: 2px solid white;
   border-radius: 100%;
   cursor: pointer;
-  box-shadow: 3px 3px 5px grey;
+  box-shadow: var(--box-shadow);
 }
 
 .mobile-disable {
@@ -228,13 +233,13 @@ input {
 }
 
 #main-bottom {
-  border: 1px solid white;
+  border: var(--border-white);
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  box-shadow: 3px 3px 5px grey;
+  box-shadow: var(--box-shadow);
   font-size: 16px;
   text-align: center;
-  background-color: black;
+  background-color: var(--background-black);
 }
 
 #main-bottom p {
@@ -335,7 +340,7 @@ input {
   }
 
   #mute {
-    background-color: white;
+    background-color: var(--background-white);
     margin-left: 47%;
   }
 
@@ -354,7 +359,7 @@ input {
     width: 33%;
     visibility: visible;
     display: initial;
-    border-left: 1px solid white;
+    border-left: var(--border-white);
   }
 
   #right-panel ul {
@@ -366,11 +371,11 @@ input {
   }
 
   #right-panel .item-container {
-    background-color: white;
+    background-color: var(--background-white);
     border-radius: 1rem;
     padding: 0.5rem;
     width: 80%;
-    box-shadow: 3px 3px 5px grey;
+    box-shadow: var(--box-shadow);
   }
 
   #right-panel .item-img {

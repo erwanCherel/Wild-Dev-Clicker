@@ -411,7 +411,7 @@ input {
     font-size: 2rem;
   }
 
-  footer {
+  footer p {
     bottom: 0;
   }
 }

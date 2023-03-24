@@ -11,7 +11,7 @@ const items = [
     name: "CSS",
     price: 100,
     count: 0,
-    description: "Adds style",
+    description: "Add style",
   },
   {
     src: "./assets/js.png",

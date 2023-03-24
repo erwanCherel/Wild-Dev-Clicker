@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev Wild Clicker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./main.js" defer></script>
+  </head>
+  <body>
+    <audio id="audioPlay" src="./assets/music.mp3" loop></audio>
+    <section id="game-container">
+      <header>
+        <img
+          src="./assets/settings-icon.svg"
+          alt="Settings icon"
+          id="settings-icon"
+        />
+        <div id="settings" class="hidden">
+          <img src="./assets/close.svg" alt="close icon" id="close-icon" />
+          <div id="musicControl">
+            <p>Enable music :</p>
+            <img id="mute" src="./assets/mute.svg" alt="mute icon" />
+          </div>
+          <form>
+            <label for="inputUsername" id="username">Choose a username :</label>
+            <input type="text" id="inputUsername" placeholder="Xavier" />
+            <input type="button" value="Submit" id="settingsButton" />
+            <div id="error"></div>
+            <div id="imgSelect">
+              <label for="upload" id="imgPick"
+                >Upload your clicker-picture</label
+              >
+              <input
+                type="file"
+                onchange="handleFiles(files)"
+                id="upload"
+                name="file"
+              />
+            </div>
+            <div>
+              <label for="upload"><span id="preview"></span></label>
+            </div>
+          </form>
+        </div>
+        <h1>Wild Dev Clicker</h1>
+      </header>
+      <div id="main-top">
+        <h2 id="user">UserName</h2>
+        <div id="username-scores">
+          <p><span id="scoreTotal">0</span> XP</p>
+          <p><span id="xpS">0</span> xp/10s</p>
+        </div>
+      </div>
+      <div id="main-middle">
+        <img src="./assets/cat.png" alt="Cat" id="cat" onclick="clickCat()" />
+        <ul id="grid">
+          <li id="html" class="disable mobile-disable">
+            <img src="./assets/html.png" alt="logo html" />
+            <p>x<span class="score-html">0</span></p>
+          </li>
+          <li id="css" class="disable mobile-disable">
+            <img src="./assets/css.png" alt="logo css" />
+            <p>x<span class="score-css">0</span></p>
+          </li>
+          <li id="javascript" class="disable mobile-disable">
+            <img src="./assets/js.png" alt="logo js" />
+            <p>x<span class="score-javascript">0</span></p>
+          </li>
+          <li id="react" class="disable mobile-disable">
+            <img src="./assets/react.png" alt="logo react" />
+            <p>x<span class="score-react">0</span></p>
+          </li>
+          <li id="sql" class="disable mobile-disable">
+            <img src="./assets/sql.png" alt="logo sql" />
+            <p>x<span class="score-sql">0</span></p>
+          </li>
+        </ul>
+      </div>
+      <div id="main-bottom">
+        <p id="setup"></p>
+        <p id="punchline"></p>
+      </div>
+      <footer>© Wild Code School</footer>
+    </section>
+    <section id="right-panel">
+      <ul></ul>
+    </section>
+  </body>
+</html>
